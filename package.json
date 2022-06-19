@@ -1,0 +1,30 @@
+{
+  "name": "bluetoothPrinter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-bluetooth-escpos-printer": "^0.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/runtime": "^7.18.3",
+    "@react-native-community/eslint-config": "^3.0.2",
+    "babel-jest": "^28.1.1",
+    "eslint": "^8.18.0",
+    "jest": "^28.1.1",
+    "metro-react-native-babel-preset": "^0.71.1",
+    "react-test-renderer": "17.0.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

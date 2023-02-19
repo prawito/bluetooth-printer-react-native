@@ -12,7 +12,8 @@
   "dependencies": {
     "react": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-bluetooth-escpos-printer": "git+https://github.com/hudoro-solusi-digital/react-native-bluetooth-escpos-printer"
+    "react-native-bluetooth-escpos-printer": "git+https://github.com/hudoro-solusi-digital/react-native-bluetooth-escpos-printer",
+    "react-native-permissions": "^3.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",

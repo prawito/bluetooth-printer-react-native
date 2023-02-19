@@ -9,8 +9,10 @@ import {
   Text,
   ToastAndroid,
   View,
+  Button,
 } from 'react-native';
 import { BluetoothManager } from 'react-native-bluetooth-escpos-printer';
+import { PERMISSIONS, requestMultiple, RESULTS } from 'react-native-permissions';
 import ItemList from './ItemList';
 import SamplePrint from './SamplePrint';
 import { styles } from './styles';
@@ -203,6 +205,26 @@ const App = () => {
       console.warn(err);
     }
   }, [scanDevices]);
+  
+  const scanBluetoothDevice = async () => {
+    setLoading(true);
+    try {
+      const request = await requestMultiple([
+        PERMISSIONS.ANDROID.BLUETOOTH_CONNECT,
+        PERMISSIONS.ANDROID.BLUETOOTH_SCAN,
+        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      ]);
+
+      if (request['android.permission.ACCESS_FINE_LOCATION'] === RESULTS.GRANTED) {
+        scanDevices();
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
+    } catch (err) {
+      setLoading(false);
+    }
+  };
 
   return (
       <ScrollView style={styles.container}>
@@ -243,6 +265,10 @@ const App = () => {
           })}
         </View>
         <SamplePrint />
+        <Button
+          onPress={() => scanBluetoothDevice()}
+          title="Scan Bluetooth"
+        />
         <View style={{height: 100}} />
       </ScrollView>
   );
